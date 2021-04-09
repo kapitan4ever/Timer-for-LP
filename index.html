@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer for LP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo" title="Это пример верстки. Кнопка никуда не ведет">Логотип</a>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" title="Это пример верстки. Кнопка никуда не ведет">Меню</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <img src="img/curve.png" class="wave" alt="curve">
+        <div class="contentBx">
+            <h2>Скоро будет</h2>
+            <p>До нового года осталось всего ничего!<br>А вы успели выполнить поставленные цели на год?</p>
+            <div class="countdown">
+                <div class="time"><div id="day"></div><span>Дни</span></div>
+                <div class="time"><div id="hour"></div><span>Часы</span></div>
+                <div class="time"><div id="minute"></div><span>Минуты</span></div>
+                <div class="time"><div id="second"></div><span>Секунды</span></div>
+            </div>
+            <a href="#" onclick="toggle();">Уведомить меня!</a>
+        </div>
+        <div class="imgBx"><img src="img/man.png" alt="man"></div>
+        <ul class="sci">
+            <li><a href="#"><img src="img/facebook.png" alt="facebook" title="Это пример верстки. Кнопка никуда не ведет"></a></li>
+            <li><a href="#"><img src="img/twitter.png" alt="twitter" title="Это пример верстки. Кнопка никуда не ведет"></a></li>
+            <li><a href="#"><img src="img/instagram.png" alt="instagram" title="Это пример верстки. Кнопка никуда не ведет"></a></li>
+        </ul>
+    </section>
+    <div class="newsletter">
+        <h2>Подписаться на рассылку</h2>
+        <p>Получить уведомление при запуске</p>
+        <div class="inputBox">
+            <form action="">
+                <input type="email" name="" required="" placeholder="Введите свой Email">
+                <input type="submit" value="Отправить" title="Это пример верстки. Кнопка никуда не ведет">
+            </form>
+        </div>
+        <img src="img/close.png" class="close" alt="close" onclick="toggle();">
+    </div>
+    <script>
+        'use strict'
+        function toggle(){
+            let newsletter = document.querySelector('.newsletter');
+            newsletter.classList.toggle('active')
+        }
+
+        let countDate = new Date('Jan 1, 2022 00:00:00').getTime();
+        function newYear(){
+            let now = new Date().getTime();
+            let gap = countDate - now;
+
+                let second = 1000;
+                let minute = second * 60;
+                let hour = minute * 60;
+                let day = hour * 24;
+
+                let d = Math.floor(gap / (day));
+                let h = Math.floor((gap % (day)) / (hour));
+                let m = Math.floor((gap % (hour)) / (minute));
+                let s = Math.floor((gap % (minute)) / second);
+
+                document.getElementById('day').innerText = d;
+                document.getElementById('hour').innerText = h;
+                document.getElementById('minute').innerText = m;
+                document.getElementById('second').innerText = s;
+        }
+
+        setInterval(function(){
+            newYear();
+        },1000)
+    </script>
+</body>
+</html>
